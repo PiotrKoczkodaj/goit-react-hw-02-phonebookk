@@ -1,15 +1,17 @@
 import { Component } from "react";
 import styles from './ContactList.module.css';
-
+import { nanoid } from 'nanoid'
 export class ContactList extends Component{
 
 
     render() {
+
+
+        const { state } = this.props;
+       
         return (
             <div>
-                <ul>
-                    
-                </ul>
+                {state.contacts.map(contact =><p key={nanoid()}>{contact}</p>)}
         </div>
     )
 }

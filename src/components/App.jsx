@@ -16,15 +16,22 @@ state = {
     const handleSubmit = (e) => {
       e.preventDefault();
       const form = e.currentTarget;
-      const nameValue = form.elements[0].value;
-      console.log(form.elements[0].value);
+      const login = form.elements[0].value;
+      console.log(login);
       
-      this.setState({})
-      this.setState(this.state.contacts.push({}))
+      let newChild = login;
+      this.setState({
+    contacts: [
+        ...this.state.contacts,
+        newChild
+    ]
+})
+      
+      
     };
-
+ 
   
-console.log(this.state)
+
   return (
     <div
       style={{
@@ -40,7 +47,7 @@ console.log(this.state)
       <h2>Phonebook</h2>
       <ContactForm submit={handleSubmit}  />
       <h2>Contacts</h2>
-      <ContactList/>
+      <ContactList state={this.state } />
     </div>
   );
   }
