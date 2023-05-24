@@ -1,55 +1,54 @@
-import { Component } from "react";
-import { ContactForm } from "./ContactForm/ContactForm";
-import { ContactList } from "./ContactList/ContactList";
+import { Component } from 'react';
+import { nanoid } from 'nanoid';
+import { ContactForm } from './ContactForm/ContactForm';
+import { ContactList } from './ContactList/ContactList';
+import { Filter } from './Filter/Filter';
 export class App extends Component {
+  state = {
+    contacts: [{id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
+    {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
+    {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
+    {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'}],
+    filter: ''
+  };
 
-state = {
-  contacts: [],
-  name: ''
-}
-  
-  
   render() {
-    
-    
-
-    const handleSubmit = (e) => {
+    const handleSubmit = e => {
       e.preventDefault();
       const form = e.currentTarget;
-      const login = form.elements[0].value;
-      console.log(login);
-      
-      let newChild = login;
+      const nameValue = form.elements[0].value;
+      const number = form.elements[1].value
+      console.log(number)
       this.setState({
-    contacts: [
-        ...this.state.contacts,
-        newChild
-    ]
-})
-      
-      
+        contacts: [
+          ...this.state.contacts,
+          {
+            name: nameValue,
+            id: nanoid(),
+            number:number
+          },
+        ],
+      });
     };
- 
-  
 
-  return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101',
-        flexDirection:'column'
-      }}
-    >
-      <h2>Phonebook</h2>
-      <ContactForm submit={handleSubmit}  />
-      <h2>Contacts</h2>
-      <ContactList state={this.state } />
-    </div>
-  );
+    return (
+      <div
+        style={{
+          height: '100vh',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          fontSize: 40,
+          color: '#010101',
+          flexDirection: 'column',
+        }}
+      >
+        <h2>Phonebook</h2>
+        <ContactForm submit={handleSubmit} />
+        <h2>Contacts</h2>
+        <Filter state={this.state } />
+        <ContactList state={this.state} />
+      </div>
+    );
   }
-
 }
