@@ -13,12 +13,12 @@ export class App extends Component {
   };
 
   render() {
-    const handleSubmit = e => {
+
+    const handleSubmit = (e) => {
       e.preventDefault();
       const form = e.currentTarget;
       const nameValue = form.elements[0].value;
       const number = form.elements[1].value
-      console.log(number)
       this.setState({
         contacts: [
           ...this.state.contacts,
@@ -27,10 +27,25 @@ export class App extends Component {
             id: nanoid(),
             number:number
           },
+          
         ],
+        filter:nameValue
       });
+
+ const check = () => {
+      this.state.contacts.map(contact => {
+        if (contact.name === this.state.filter) {
+          alert('stop')
+        }
+      })
+    }
+
+      check()
     };
 
+   
+
+  
     return (
       <div
         style={{
@@ -44,7 +59,7 @@ export class App extends Component {
         }}
       >
         <h2>Phonebook</h2>
-        <ContactForm submit={handleSubmit} />
+        <ContactForm submit={handleSubmit}/>
         <h2>Contacts</h2>
         <Filter state={this.state } />
         <ContactList state={this.state} />

@@ -7,10 +7,9 @@ export class ContactForm extends Component {
     
     render() {
       
-        const { submit} = this.props;
-        
-
-    return (
+      const { submit } = this.props;
+      return (
+      
       <form onSubmit={submit} >
         <label>Name</label>
         <input
@@ -29,8 +28,11 @@ export class ContactForm extends Component {
   title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
   required
 />
-            <button >Add contact</button>
+            <button>Add contact</button>
                 </form>
-    );
+      );
+      
   }
+
+  
 }
