@@ -3,51 +3,49 @@ import { nanoid } from 'nanoid';
 import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
+
 export class App extends Component {
   state = {
-    contacts: [{id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
-    {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
-    {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
-    {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'}],
-    filter: ''
+    contacts: [
+      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+    ],
+    filter: '',
   };
 
   render() {
-
-    const handleSubmit = (e) => {
+    console.log(this.state);
+    const handleSubmit = e => {
       e.preventDefault();
       const form = e.currentTarget;
       const nameValue = form.elements[0].value;
-      const number = form.elements[1].value
+      const number = form.elements[1].value;
       this.setState({
         contacts: [
           ...this.state.contacts,
           {
             name: nameValue,
             id: nanoid(),
-            number:number
+            number: number,
           },
-          
         ],
-        filter:nameValue
+        filter: nameValue,
       });
-      console.log(this.state.contacts)
       
- const check = () => {
-      this.state.contacts.map(contact => {
-        if (contact.name === this.state.filter) {
-          alert(this.state.filter+' '+'is already in contacts')
-          
-        }
-      })
-    }
 
-      check()
+      const check = () => {
+        this.state.contacts.map(contact => {
+          if (contact.name === this.state.filter) {
+            alert(this.state.filter + ' ' + 'is already in contacts');
+          }
+        });
+      };
+
+      check();
     };
 
-   
-
-  
     return (
       <div
         style={{
@@ -61,9 +59,9 @@ export class App extends Component {
         }}
       >
         <h2>Phonebook</h2>
-        <ContactForm submit={handleSubmit}/>
+        <ContactForm submit={handleSubmit} />
         <h2>Contacts</h2>
-        <Filter state={this.state } />
+        <Filter state={this.state} />
         <ContactList state={this.state} />
       </div>
     );
