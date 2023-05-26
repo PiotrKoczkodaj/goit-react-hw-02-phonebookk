@@ -31,11 +31,13 @@ export class App extends Component {
         ],
         filter:nameValue
       });
-
+      console.log(this.state.contacts)
+      
  const check = () => {
       this.state.contacts.map(contact => {
         if (contact.name === this.state.filter) {
-          alert('stop')
+          alert(this.state.filter+' '+'is already in contacts')
+          
         }
       })
     }
