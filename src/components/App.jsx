@@ -16,7 +16,7 @@ export class App extends Component {
   };
 
   render() {
-    console.log(this.state);
+    
     const handleSubmit = e => {
       e.preventDefault();
       const form = e.currentTarget;
@@ -34,7 +34,6 @@ export class App extends Component {
         filter: nameValue,
       });
       
-
       const check = () => {
         this.state.contacts.map(contact => {
           if (contact.name === this.state.filter) {
@@ -45,6 +44,8 @@ export class App extends Component {
 
       check();
     };
+    
+
 
     return (
       <div
@@ -62,7 +63,7 @@ export class App extends Component {
         <ContactForm submit={handleSubmit} />
         <h2>Contacts</h2>
         <Filter state={this.state} />
-        <ContactList state={this.state} />
+        <ContactList state={this.state}/>
       </div>
     );
   }
