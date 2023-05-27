@@ -2,21 +2,15 @@ import { Component } from "react";
 export class Filter extends Component{
 
     render() {
-        const { state,func,funt } = this.props;
-    
-        const filterUsers = (e) => {
-          
-          
+        const { state,func } = this.props;
 
-            
-        }
-        console.log(state)
+        
         return (
             <form>
                 <label>
                     Find contact
                 </label>
-                <input onChange={func} onKeyDown={funt }></input>
+                <input onChange={func}></input>
             </form>
         )
     }

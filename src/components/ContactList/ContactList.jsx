@@ -8,8 +8,8 @@ export class ContactList extends Component {
       <div>
         {state.contacts.map(contact => (
           <p key={nanoid()}>
-            {contact.name}
-            {contact.number}
+            {contact.name}{' '} 
+              {contact.number}
             <button
               onClick={() => {
                 let index = state.contacts.indexOf(contact);

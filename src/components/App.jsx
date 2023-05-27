@@ -33,43 +33,36 @@ export class App extends Component {
         ],
         filter: nameValue,
       });
-      
+     
      
     };
 
     const changingState = (e) => {
 
        this.setState({
-            filter:e.target.value
+            filter:e.target.value.toUpperCase()
        });
-      
+     
       let result = this.state.contacts.filter(contact => {
+       
+        return contact.name.toUpperCase().includes(this.state.filter)
         
-          return contact.name.toUpperCase().includes(this.state.filter.toUpperCase()) 
       });
       
       this.setState({
             contacts:result
-                });
-    }
-
-    const funt = (e) => {
-      if (e.target.value==='') { 
-        this.setState({
-          contacts:[...this.state.contacts]
-        })
-      }
-                        
-                    
-    }
-    return (
+      });
+        
+    }    
+   
+  return (
       <div
         style={{
           height: '100vh',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          fontSize: 40,
+        fontSize: 40,
           color: '#010101',
           flexDirection: 'column',
         }}
@@ -77,7 +70,7 @@ export class App extends Component {
         <h2>Phonebook</h2>
         <ContactForm submit={handleSubmit} />
         <h2>Contacts</h2>
-        <Filter state={this.state} func={changingState} e={funt} />
+        <Filter state={this.state} func={changingState}  />
         <ContactList state={this.state}/>
       </div>
     );
