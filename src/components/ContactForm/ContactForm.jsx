@@ -1,10 +1,8 @@
 import { Component } from 'react';
-import styles from './ContactForm.module.css';
+
 
 export class ContactForm extends Component {
 
-    
-    
     render() {
       
       const { submit } = this.props;

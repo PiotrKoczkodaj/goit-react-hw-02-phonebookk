@@ -34,15 +34,7 @@ export class App extends Component {
         filter: nameValue,
       });
       
-      const check = () => {
-        this.state.contacts.map(contact => {
-          if (contact.name === this.state.filter) {
-            alert(this.state.filter + ' ' + 'is already in contacts');
-          }
-        });
-      };
-
-      check();
+     
     };
     
 

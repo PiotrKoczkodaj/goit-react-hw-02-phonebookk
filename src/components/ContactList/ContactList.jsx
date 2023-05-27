@@ -1,5 +1,4 @@
 import { Component } from 'react';
-import styles from './ContactList.module.css';
 import { nanoid } from 'nanoid';
 
 export class ContactList extends Component {
