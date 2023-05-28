@@ -2,7 +2,7 @@ import { Component } from "react";
 export class Filter extends Component{
 
     render() {
-        const { state,func } = this.props;
+        const {func } = this.props;
 
         
         return (
