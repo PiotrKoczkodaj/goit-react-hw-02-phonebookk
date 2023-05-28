@@ -13,7 +13,7 @@ export class App extends Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
-  }
+  };
   render() {
     const handleSubmit = e => {
       e.preventDefault();
@@ -40,8 +40,7 @@ export class App extends Component {
           });
           return alert(`${nameValue} is already in contacts`);
         }
-        return
-      });
+      })
     };
 
     const changingState = e => {
@@ -55,9 +54,7 @@ export class App extends Component {
 
       this.setState({
         contacts: result,
-      });
-      
-    };
+      })};
     return (
       <div
         style={{
