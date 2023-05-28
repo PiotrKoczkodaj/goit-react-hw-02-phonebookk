@@ -33,7 +33,7 @@ export class App extends Component {
         filter: nameValue,
       });
 
-      this.state.contacts.map(contact => {
+     return this.state.contacts.map(contact => {
         if (contact.name.includes(nameValue)) {
           this.setState({
             contacts: this.state.contacts,
