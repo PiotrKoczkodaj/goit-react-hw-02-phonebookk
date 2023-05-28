@@ -34,7 +34,7 @@ export class App extends Component {
       });
 
       return this.state.contacts.map(contact => {
-        if (contact.name===nameValue) {
+        if (contact.name === nameValue) {
           this.setState({
             contacts: this.state.contacts,
           });
@@ -44,7 +44,7 @@ export class App extends Component {
       });
     };
 
-    const changingState = e => {
+    const filterUsers = e => {
       this.setState({
         filter: e.target.value.toUpperCase(),
       });
@@ -65,7 +65,7 @@ export class App extends Component {
         <h2>Phonebook</h2>
         <ContactForm submit={handleSubmit} />
         <h2>Contacts</h2>
-        <Filter func={changingState} />
+        <Filter filerUsers={filterUsers} />
         <ContactList state={this.state} />
       </div>
     );
