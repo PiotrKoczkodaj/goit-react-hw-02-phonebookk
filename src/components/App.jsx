@@ -34,7 +34,7 @@ export class App extends Component {
       });
 
       return this.state.contacts.map(contact => {
-        if (contact.name.includes(nameValue)) {
+        if (contact.name===nameValue) {
           this.setState({
             contacts: this.state.contacts,
           });
@@ -47,14 +47,6 @@ export class App extends Component {
     const changingState = e => {
       this.setState({
         filter: e.target.value.toUpperCase(),
-      });
-
-      let result = this.state.contacts.filter(contact => {
-        return contact.name.toUpperCase().includes(this.state.filter);
-      });
-
-      this.setState({
-        contacts: result,
       });
     };
 

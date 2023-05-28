@@ -4,11 +4,12 @@ import { nanoid } from 'nanoid';
 export class ContactList extends Component {
   render() {
     const { state } = this.props;
+   
     return (
       <div>
-        {state.contacts.map(contact => (
+        {state.contacts.filter(contact =>contact.name.includes(state.filter.toUpperCase())).map(contact => (
           <p key={nanoid()}>
-            {contact.name}{' '} 
+            {contact.name}{''} 
               {contact.number}
             <button
               onClick={() => {
