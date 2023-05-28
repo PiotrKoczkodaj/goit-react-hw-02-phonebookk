@@ -30,18 +30,18 @@ export class App extends Component {
             number: number,
           },
         ],
-        filter: nameValue,
+        filter: '',
       });
 
-     return this.state.contacts.map(contact => {
+      return this.state.contacts.map(contact => {
         if (contact.name.includes(nameValue)) {
           this.setState({
             contacts: this.state.contacts,
           });
           return alert(`${nameValue} is already in contacts`);
         }
-       return null;
-      })
+        return null;
+      });
     };
 
     const changingState = e => {
@@ -55,7 +55,9 @@ export class App extends Component {
 
       this.setState({
         contacts: result,
-      })};
+      });
+    };
+
     return (
       <div
         style={{
@@ -71,7 +73,7 @@ export class App extends Component {
         <h2>Phonebook</h2>
         <ContactForm submit={handleSubmit} />
         <h2>Contacts</h2>
-        <Filter state={this.state} func={changingState} />
+        <Filter func={changingState} />
         <ContactList state={this.state} />
       </div>
     );
