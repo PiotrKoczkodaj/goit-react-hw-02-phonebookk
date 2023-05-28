@@ -8,7 +8,7 @@ export class ContactForm extends Component {
       const { submit } = this.props;
       return (
       
-      <form onSubmit={submit} >
+      <form onSubmit={submit}  >
         <label>Name</label>
         <input
           type="text"

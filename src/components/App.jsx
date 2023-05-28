@@ -17,12 +17,30 @@ export class App extends Component {
 
   render() {
     
+    // const handleSubmit = e => {
+    //   e.preventDefault();
+    //   const form = e.currentTarget;
+    //   const nameValue = form.elements[0].value;
+    //   const number = form.elements[1].value;
+
+
+    // };
+
     const handleSubmit = e => {
       e.preventDefault();
       const form = e.currentTarget;
       const nameValue = form.elements[0].value;
       const number = form.elements[1].value;
-      this.setState({
+
+      
+      this.setState(prevState => {
+        prevState.contacts.map(contact => {
+          if (contact.name.includes(nameValue)) {
+           return alert('juz jest')
+          }
+
+          if (!contact.name.includes(nameValue)) {
+                 this.setState({
         contacts: [
           ...this.state.contacts,
           {
@@ -33,12 +51,15 @@ export class App extends Component {
         ],
         filter: nameValue,
       });
-     
-     
-    };
+          }
+       
+    })
+  });
+}
+    
+    
 
     const changingState = (e) => {
-
        this.setState({
             filter:e.target.value.toUpperCase()
        });
@@ -68,7 +89,7 @@ export class App extends Component {
         }}
       >
         <h2>Phonebook</h2>
-        <ContactForm submit={handleSubmit} />
+        <ContactForm submit={handleSubmit}  />
         <h2>Contacts</h2>
         <Filter state={this.state} func={changingState}  />
         <ContactList state={this.state}/>
