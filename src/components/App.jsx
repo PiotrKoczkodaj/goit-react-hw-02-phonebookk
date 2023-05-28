@@ -40,6 +40,7 @@ export class App extends Component {
           });
           return alert(`${nameValue} is already in contacts`);
         }
+       return null;
       })
     };
 
